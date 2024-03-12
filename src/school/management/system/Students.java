@@ -1,6 +1,6 @@
 package school.management.system;
 
-public class School {
+public class Students {
 
     private int id;
     private String name;
@@ -11,7 +11,7 @@ public class School {
      * @param id the id of the student
      *    the student class
      */
-    public School(int id, String name, int grade) {
+    public Students(int id, String name, int grade) {
         this.feesPaid = 0;
         this.feesTotal = 20_0000;
         this.id = id;
@@ -29,6 +29,11 @@ public class School {
      * @param feesPaid update the fees paid when a student paid fees
      */
    public void updateFeesPaid(int feesPaid) {
+
        this.feesPaid += feesPaid;
    }
+
+    public int getFeesPaid() {
+        return feesPaid;
+    }
 }

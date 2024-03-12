@@ -19,7 +19,7 @@ public class Main {
 
         var petet = new Teachers(1, "PeterT", 20_000);
         var johnT = new Teachers(2, "JohnT", 10_000);
-        var maryT = new Teachers(3, "MaryT", 10_coo000);
+        var maryT = new Teachers(3, "MaryT", 10_000);
 
         List<Teachers> teachersList = new ArrayList<>();
         teachersList.add(petet);

@@ -9,11 +9,13 @@ public class Shool {
     private int totalMoneyEard;
     private int totalMoneySpent;
 
+    private int totalMoneySchoolOws;
     public Shool(List<Teachers> teachersList, List<Students> studentsList) {
         this.teachersList = teachersList;
         this.studentsList = studentsList;
         this.totalMoneyEard = 0;
         this.totalMoneySpent = 0;
+        this.totalMoneySchoolOws = 0;
     }
 
     public List<Teachers> getTeachersList() {
@@ -33,17 +35,20 @@ public class Shool {
     }
 
     public int getTotalMoneyEard() {
+        for (Students student : studentsList){
+            this.totalMoneyEard += student.getFeesPaid();
+        }
         return totalMoneyEard;
     }
 
     /**
      * my own function to calculate total money earn
      */
-//    public void updateTotalMoneyEard() {
-//        for (Students student : studentsList){
-//            this.totalMoneyEard += student.getFeesPaid();
-//        }
-//    }
+    public void updateTotalMoneyEard() {
+        for (Students student : studentsList){
+            this.totalMoneyEard += student.getFeesPaid();
+        }
+    }
 
     /**
      *
@@ -54,6 +59,11 @@ public class Shool {
     }
 
     public int getTotalMoneySpent() {
+        for (Teachers teachers : teachersList) {
+            this.totalMoneySpent += teachers.getSalary();
+        }
+        if (totalMoneySpent > getTotalMoneyEard())
+            return -1;
         return totalMoneySpent;
     }
 
@@ -66,11 +76,13 @@ public class Shool {
     }
 
     /**
-     * @param totalMoneySpent my own point of view
+     *
+     * @param totalMoneySchoolOws the money the school ows teachers
      */
-//    public  void updateTotalMoneySpent() {
-//        for (Teachers teachers : teachersList) {
-//            this.totalMoneySpent += teachers.getSalary();
-//        }
-//    }
+    public  int updatetotalMoneySchoolOws() {
+       this.totalMoneySchoolOws = getTotalMoneyEard() - getTotalMoneySpent();
+       if (totalMoneySchoolOws < 0)
+           return Math.abs(totalMoneySchoolOws);
+       return totalMoneySchoolOws;
+    }
 }
